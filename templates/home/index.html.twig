@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<h1>Homepage</h1>
+
+    <div>
+        {% for article in articles %}
+            <div>
+                <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.title }}">
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

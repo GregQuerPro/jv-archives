@@ -1,0 +1,30 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Edit Article{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4">Editer Article</h1>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <div>Statut: {% if article.published %} <strong>Publié</strong> {% else %} <strong>Brouillon</strong> {% endif %}</div>
+                <div>Dernière modification: <strong>{{ article.updatedAt|format_datetime('full', locale='fr')|capitalize }}</strong></div>
+            </div>
+        {{ include('admin/article/_delete_form.html.twig') }}
+        </div>
+    {{ form_start(form) }}
+    <div class="d-flex justify-content-end mt-2">
+        <button type="submit"
+                    class="btn btn-primary m-1">{{ button_label|default('Mettre à jour') }}</button>
+        {% if article.published %}
+            <button type="submit" name="draft" value="1"
+                    class="btn btn-secondary m-1">{{ button_label|default('Brouillon') }}</button>
+        {% else %}
+            <button type="submit" name="publish" value="1"
+                    class="btn btn-primary m-1 ">{{ button_label|default('Publier') }}</button>
+        {% endif %}
+    </div>
+    {{ include('admin/article/_form.html.twig') }}
+    {{ form_end(form) }}
+
+{% endblock %}

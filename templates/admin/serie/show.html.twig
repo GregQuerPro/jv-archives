@@ -1,0 +1,43 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Serie{% endblock %}
+
+{% block body %}
+    <h1>Série</h1>
+
+    <div class="mb-4">
+        <div class="d-flex justify-content-end">
+            <div class="m-1">
+                <a href="{{ path('app_admin_serie_edit', {'id': serie.id}) }}" class="btn btn-primary">Editer</a>
+            </div>
+            <div class="m-1">
+                {{ include('admin/serie/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ serie.name }}</td>
+        </tr>
+        <tr>
+            <th>Slug</th>
+            <td>{{ serie.slug }}</td>
+        </tr>
+        <tr>
+            <th>Création</th>
+            <td>{{ serie.createdAt ? serie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Mise à jour</th>
+            <td>{{ serie.updatedAt ? serie.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td><img src="{{ vich_uploader_asset(serie) }}" alt="" width="400px"></td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Console index{% endblock %}
+
+{% block body %}
+       <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Liste des consoles</h1>
+        <a href="{{ path('app_admin_console_new') }}" class="btn btn-primary">Créer un nouveau</a>
+    </div>
+    <table class="table mb-4">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Mise à jour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for console in consoles %}
+            <tr>
+                <td class="table__cell"><img src="{{ vich_uploader_asset(console) }}" alt="" width="100px"></td>
+                <td class="table__cell">{{ console.name }}</td>
+                <td class="table__cell">{{ console.updatedAt ? console.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="table__cell">
+                    <a href="{{ path('app_admin_console_show', {'id': console.id}) }}" class="btn btn-info">Détails</a>
+                    <a href="{{ path('app_admin_console_edit', {'id': console.id}) }}" class="btn btn-primary">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucune console trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

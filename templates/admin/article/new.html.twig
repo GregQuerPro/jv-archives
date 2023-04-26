@@ -1,0 +1,16 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Nouveau Article{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4">Créer un nouvel Article</h1>
+    {{ form_start(form) }}
+    <div class="d-flex justify-content-end">
+        <button type="submit" name="publish" value="1"
+                class="btn btn-primary m-1 ">{{ button_label|default('Publier') }}</button>
+        <button type="submit" name="draft" value="0"
+                class="btn btn-secondary m-1">{{ button_label|default('Brouillon') }}</button>
+    </div>
+    {{ include('admin/article/_form.html.twig') }}
+    {{ form_end(form) }}
+{% endblock %}
