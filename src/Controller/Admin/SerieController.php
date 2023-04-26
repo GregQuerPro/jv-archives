@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Serie;
 use App\Form\SerieType;
 use App\Repository\SerieRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class SerieController extends AbstractController
 {
     #[Route('/', name: 'app_admin_serie_index', methods: ['GET'])]
-    public function index(SerieRepository $serieRepository): Response
+    public function index(SerieRepository $serieRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $series = $serieRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $series, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            10 /*limit per page*/
+        );
+
         return $this->render('admin/serie/index.html.twig', [
-            'series' => $serieRepository->findAll(),
+            'series' => $pagination,
         ]);
     }
 

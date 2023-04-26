@@ -61,3 +61,31 @@ body {
     margin-top: 0;
     margin-right: 1rem;
 }
+
+.sortable, .asc, .desc {
+    position: relative;
+}
+
+/*.sortable:after {*/
+/*    content: '↕';*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    top: -2px;*/
+/*    right: -15px;*/
+/*}*/
+
+.asc:after {
+    content: '↑';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -15px;
+}
+
+.desc:after {
+    content: '↓';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -15px;
+}
