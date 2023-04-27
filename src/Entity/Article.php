@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -20,16 +24,33 @@ class Article
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le titre ne doit pas être vide.")]
+    #[Assert\Length(
+        min: 10,
+        max: 100,
+        minMessage: "Le titre doit comporter au moins {{ limit }} caractères.",
+        maxMessage: "Le titre ne doit pas dépasser {{ limit }} caractères."
+    )]
+    #[ORM\Column(length: 100)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le slug ne doit pas être vide.")]
+    #[Assert\Length(
+        min: 10,
+        max: 100,
+        minMessage: "Le slug doit comporter au moins {{ limit }} caractères.",
+        maxMessage: "Le slug ne doit pas dépasser {{ limit }} caractères."
+    )]
+    #[ORM\Column(length: 100)]
     private ?string $slug = null;
 
+    #[Assert\NotBlank(message: "Le contenu ne doit pas être vide.")]
+    #[Assert\Length(
+        min: 100,
+        minMessage: "Le contenu doit comporter au moins {{ limit }} caractères."
+    )]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
-
-//    private ?string $excerpt = null;
 
     #[ORM\Column]
     private ?bool $published = false;
@@ -51,6 +72,7 @@ class Article
     private Collection $consoles;
 
     #[Vich\UploadableField(mapping: 'articles', fileNameProperty: 'imageName', size: 'imageSize')]
+    #[Assert\Image(maxSize: '4M', maxSizeMessage: "L'image ne doit pas dépasser {{ limit }}.")]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]
@@ -59,10 +81,34 @@ class Article
     #[ORM\Column(nullable: true)]
     private ?int $imageSize = null;
 
+    #[Assert\NotBlank(message: "Le meta-title ne doit pas être vide.")]
+    #[Assert\Length(
+        min: 10,
+        max: 80,
+        minMessage: "Le meta-title doit comporter au moins {{ limit }} caractères.",
+        maxMessage: "Le meta-title ne doit pas dépasser {{ limit }} caractères."
+    )]
+    #[ORM\Column(length: 80)]
+    private ?string $metaTitle = null;
+
+    #[Assert\NotBlank(message: "La meta-description ne doit pas être vide.")]
+    #[Assert\Length(
+        min: 80,
+        max: 180,
+        minMessage: "La meta-description doit comporter au moins {{ limit }} caractères.",
+        maxMessage: "La meta-description ne doit pas dépasser {{ limit }} caractères."
+    )]
+    #[ORM\Column(length: 180)]
+    private ?string $metaDescription = null;
+
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Commentaire::class)]
+    private Collection $commentaires;
+
 
     public function __construct()
     {
         $this->consoles = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -228,6 +274,60 @@ class Article
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    public function getMetaTitle(): ?string
+    {
+        return $this->metaTitle;
+    }
+
+    public function setMetaTitle(string $metaTitle): self
+    {
+        $this->metaTitle = $metaTitle;
+
+        return $this;
+    }
+
+    public function getMetaDescription(): ?string
+    {
+        return $this->metaDescription;
+    }
+
+    public function setMetaDescription(string $metaDescription): self
+    {
+        $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getArticle() === $this) {
+                $commentaire->setArticle(null);
+            }
+        }
+
+        return $this;
     }
 
 

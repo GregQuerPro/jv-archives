@@ -1,0 +1,43 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Utilisateur index{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Liste des utilisateurs</h1>
+        <a href="{{ path('app_admin_user_new') }}" class="btn btn-primary">Créer un nouvel admininstrateur</a>
+    </div>
+    <table class="table mb-4">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th {% if users.isSorted('title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(users, 'Mettre à jour', 'updatedAt') }}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td class="table__cell">{{ user.username }}</td>
+                <td class="table__cell">{{ user.email }}</td>
+                <td class="table__cell">{% if "ROLE_ADMIN" in user.roles %}ADMIN{% else %}UTILISATEUR{% endif %}</td>
+                <td class="table__cell">{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="table__cell">
+                    <a href="{{ path('app_admin_user_show', {'id': user.id}) }}" class="btn btn-info">Détails</a>
+                    <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}" class="btn btn-primary">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun utilisateur trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(users) }}
+    </div>
+{% endblock %}

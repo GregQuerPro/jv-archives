@@ -2,21 +2,89 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c33e8ce3-fb4c-40e6-a93a-244589e04a3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config/packages/paginator.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/react/controllers/Flash.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20230426205242.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20230426211405.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/articles/delish-how-to-make-a-smoothie-horizontal-1542310071-6449a9386181b212228892.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/articles/delish-how-to-make-a-smoothie-horizontal-1542310071-644ab1d4a883f734035373.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/articles/hapus-mango-644abcd05a7cd655511850.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/consoles/benefits-of-pineapple-1296x728-feature-644ab02f157c8513752467.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/consoles/hapus-mango-644abb111f09d629124316.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/series/hapus-mango-644abb3f488b8486962556.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/LogoutController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EventListener/ConsoleListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EventListener/SerieListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/user/_delete_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/user/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/user/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/user/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/user/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/user/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jv-archives.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jv-archives.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/styles/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/styles/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/admin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/styles/reset.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483051ae8d4961344125.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483051ae8d4961344125.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644830d3bc29f974769696.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644830d3bc29f974769696.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644830eb026f1881982491.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644830eb026f1881982491.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-6448318e094a7057095325.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-6448318e094a7057095325.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644831bc3a66d784795040.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644831bc3a66d784795040.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483226552c0758900231.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483226552c0758900231.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-6448325e1fdb6460470525.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-6448325e1fdb6460470525.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644832b70bdae228019328.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644832b70bdae228019328.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644832d37d3f3066612204.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644832d37d3f3066612204.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644832eb92509578602362.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-644832eb92509578602362.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483305a3334802331990.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483305a3334802331990.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-6448330fc1a69667384432.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-6448330fc1a69667384432.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483453059ef101999425.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483453059ef101999425.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483492cf2d9087084176.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/2bc51c62b97a77022b6f4a47d5a5be84d64b7e840ea3abb55263d8322d8b36b3-64483492cf2d9087084176.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/6dfa1ba27579f070387be0cddd00204a-64471c5063981721168015.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/6dfa1ba27579f070387be0cddd00204a-64471c5063981721168015.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/articles/silent-hill-f-pc-game-cover-644944fdc372d628372616.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/silent-hill-f-pc-game-cover-644944fdc372d628372616.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/consoles/1477571573-ico-playstation-fumito-ueda-1381x1600-marked-6447258fed7f1595929563.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/consoles/1477571573-ico-playstation-fumito-ueda-1381x1600-marked-6447258fed7f1595929563.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/consoles/dtf4wwav4aeooet-0-644725d234342336435360.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/consoles/dtf4wwav4aeooet-0-644725d234342336435360.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/consoles/tdcyxoyuamckmx2v3a22ag-6447253440662090614910.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/consoles/tdcyxoyuamckmx2v3a22ag-6447253440662090614910.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/consoles/the-cy-who-can-t-draw-halo18-6447256e73ac6132653982.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/consoles/the-cy-who-can-t-draw-halo18-6447256e73ac6132653982.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/series/12586nintento-sm-fragezeichen-lampe-644835821b862751967731.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/12586nintento-sm-fragezeichen-lampe-644835821b862751967731.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/series/1403062-6447249ed9dcf564254867.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/1403062-6447249ed9dcf564254867.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/series/foltrgdwuaeibmg-64472480a4677544761706.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/foltrgdwuaeibmg-64472480a4677544761706.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/series/metroid-game-guide-large-644724d6e3d0f836935801.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/metroid-game-guide-large-644724d6e3d0f836935801.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/series/ocarina-of-time-0-64472458dff37915189932.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/ocarina-of-time-0-64472458dff37915189932.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/series/p12-tokyo-fantasy-a-20180808-64472507ae154464473119.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/p12-tokyo-fantasy-a-20180808-64472507ae154464473119.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/ArticleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ConsoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/ConsoleController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/SerieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/SerieController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Console.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Console.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Serie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ArticleType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ArticleType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ConsoleType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ConsoleType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/SerieType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SerieType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/article/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/article/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/article/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/article/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/console/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/console/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/serie/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/serie/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/console/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/console/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/console/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/console/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/serie/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/serie/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/serie/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/serie/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,6 +261,8 @@
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-turbo" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-react" />
     </include_path>
   </component>
   <component name="ProjectId" id="2OsaHV55Yt2w2S5iqD0tgqkJpm4" />
@@ -241,6 +311,7 @@
       <workItem from="1682369338513" duration="13994000" />
       <workItem from="1682436834383" duration="14705000" />
       <workItem from="1682523331315" duration="3657000" />
+      <workItem from="1682615508415" duration="13338000" />
     </task>
     <servers />
   </component>

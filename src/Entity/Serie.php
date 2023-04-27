@@ -3,15 +3,19 @@
 namespace App\Entity;
 
 use App\Repository\SerieRepository;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SerieRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 #[Vich\Uploadable]
+#[AsDoctrineListener(event: Events::preRemove, priority: 500, connection: 'default')]
 class Serie
 {
     #[ORM\Id]
@@ -19,10 +23,20 @@ class Serie
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: "Le nom ne doit pas être vide.")]
+    #[Assert\Length(
+        max: 50,
+        maxMessage: "Le nom ne doit pas dépasser {{ limit }} caractères."
+    )]
+    #[ORM\Column(length: 50)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: "Le slug ne doit pas être vide.")]
+    #[Assert\Length(
+        max: 50,
+        maxMessage: "Le slug ne doit pas dépasser {{ limit }} caractères."
+    )]
+    #[ORM\Column(length: 50)]
     private ?string $slug = null;
 
     #[ORM\Column]
@@ -35,6 +49,7 @@ class Serie
     private Collection $articles;
 
     #[Vich\UploadableField(mapping: 'series', fileNameProperty: 'imageName', size: 'imageSize')]
+    #[Assert\Image(maxSize: '4M', maxSizeMessage: "L'image ne doit pas dépasser {{ limit }}.")]
     private ?File $imageFile = null;
 
     #[ORM\Column(nullable: true)]
@@ -42,6 +57,26 @@ class Serie
 
     #[ORM\Column(nullable: true)]
     private ?int $imageSize = null;
+
+    #[Assert\NotBlank(message: "Le meta-title ne doit pas être vide.")]
+    #[Assert\Length(
+        min: 10,
+        max: 80,
+        minMessage: "Le meta-title doit comporter au moins {{ limit }} caractères.",
+        maxMessage: "Le meta-title ne doit pas dépasser {{ limit }} caractères."
+    )]
+    #[ORM\Column(length: 80)]
+    private ?string $metaTitle = null;
+
+    #[Assert\NotBlank(message: "La meta-description ne doit pas être vide.")]
+    #[Assert\Length(
+        min: 80,
+        max: 180,
+        minMessage: "La meta-description doit comporter au moins {{ limit }} caractères.",
+        maxMessage: "La meta-description ne doit pas dépasser {{ limit }} caractères."
+    )]
+    #[ORM\Column(length: 180)]
+    private ?string $metaDescription = null;
 
     public function __construct()
     {
@@ -169,5 +204,29 @@ class Serie
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    public function getMetaTitle(): ?string
+    {
+        return $this->metaTitle;
+    }
+
+    public function setMetaTitle(string $metaTitle): self
+    {
+        $this->metaTitle = $metaTitle;
+
+        return $this;
+    }
+
+    public function getMetaDescription(): ?string
+    {
+        return $this->metaDescription;
+    }
+
+    public function setMetaDescription(string $metaDescription): self
+    {
+        $this->metaDescription = $metaDescription;
+
+        return $this;
     }
 }

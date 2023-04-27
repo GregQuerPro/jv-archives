@@ -30,10 +30,10 @@ class ArticleController extends AbstractController
         $articles = $articleRepository->findAll();
 
         $pagination = $paginator->paginate(
-        $articles, /* query NOT result */
-        $request->query->getInt('page', 1), /*page number*/
-        10 /*limit per page*/
-    );
+            $articles, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            10 /*limit per page*/
+        );
 
         return $this->render('admin/article/index.html.twig', [
             'articles' => $pagination,
@@ -53,6 +53,11 @@ class ArticleController extends AbstractController
             }
             $article->setAuthor($this->currentUser);
             $articleRepository->save($article, true);
+
+            $this->addFlash(
+                'success',
+                'Votre contenu a bien été enregistré !'
+            );
             return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -71,7 +76,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_article_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Article $article, ArticleRepository $articleRepository): Response
+    public function edit(Request $request, Article $article, ArticleRepository $articleRepository, $id): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -84,6 +89,14 @@ class ArticleController extends AbstractController
                 $article->setPublished(false);
             }
             $articleRepository->save($article, true);
+
+
+//            dd('test');
+            $this->addFlash(
+                'success',
+                'Votre contenu a bien été mise à jour !'
+            );
+            return $this->redirectToRoute('app_admin_article_edit', ['id' => $id], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/article/edit.html.twig', [
@@ -95,10 +108,14 @@ class ArticleController extends AbstractController
     #[Route('/{id}', name: 'app_admin_article_delete', methods: ['POST'])]
     public function delete(Request $request, Article $article, ArticleRepository $articleRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
             $articleRepository->remove($article, true);
         }
 
+        $this->addFlash(
+            'danger',
+            'Votre contenu a bien été supprimé !'
+        );
         return $this->redirectToRoute('app_admin_article_index', [], Response::HTTP_SEE_OTHER);
     }
 }

@@ -25,3 +25,12 @@ services:
     App\Services\Slugifier:
         arguments:
             $slugger: '@Symfony\Component\String\Slugger\SluggerInterface'
+
+    App\EventListener\SerieListener:
+        tags:
+            - { name: doctrine.event_listener, event: preRemove, entity: App\Entity\Serie }
+
+    App\EventListener\ConsoleListener:
+        tags:
+            - { name: doctrine.event_listener, event: preRemove, entity: App\Entity\Console }
+

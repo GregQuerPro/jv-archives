@@ -1,0 +1,14 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Nouvel uilisateur{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4">Créer un nouvel admin</h1>
+    {{ form_start(form) }}
+    <div class="d-flex justify-content-end">
+        <button type="submit" name="publish" value="1"
+                class="btn btn-primary m-1 ">{{ button_label|default('Publier') }}</button>
+    </div>
+    {{ include('admin/user/_form.html.twig') }}
+    {{ form_end(form) }}
+{% endblock %}
