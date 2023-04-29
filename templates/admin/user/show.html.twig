@@ -38,6 +38,20 @@
     </table>
 
     <div class="row mt-5">
-        <h2>Les 5 derniers commentaires de: {{ user.username }}</h2>
+        <h2 class="mb-5">Les 5 derniers commentaires de: {{ user.username }}</h2>
+        <div class="row">
+            {% for comment in lastComments %}
+                <div class="col-8 mb-4 p-4 shadow-sm bg-light border border-dark rounded">
+                    <div>
+                        {{ comment.content|raw }}
+                    </div>
+                    <div>
+                        Commenté l'article: {{ comment.article.title }}
+                    </div>
+                </div>
+                <div class="col-4"></div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
+

@@ -39,20 +39,21 @@ class CommentaireRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Commentaire[] Returns an array of Commentaire objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Commentaire[] Returns an array of Commentaire objects
+     */
+    public function findLastCommentsByUserID($id): array
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.author', 'u')
+            ->where("c.author = :userID")
+            ->setParameter('userID', $id)
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Commentaire
 //    {

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\CommentaireRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -63,10 +64,12 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_admin_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, CommentaireRepository $commentaireRepository, $id): Response
     {
+        $lastComments = $commentaireRepository->findLastCommentsByUserID($id);
         return $this->render('admin/user/show.html.twig', [
             'user' => $user,
+            'lastComments' => $lastComments
         ]);
     }
 

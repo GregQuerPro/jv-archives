@@ -23,6 +23,15 @@
 
 {% set current_path = app.request.attributes.get('_route') %}
 
+<div class="top-bar d-flex justify-content-between align-items-center bg-dark p-1 text-light">
+        <a href="{{ path('app_home') }}">
+            <div class="d-flex align-items-center">
+                <img src="{{ asset('images/general/logo.jpg') }}" alt="logo jv archives" width="40">
+                <p class="m-0" style="font-size: 12px">Aller sur site</p>
+            </div>
+        </a>
+    <div class="text-light me-3" style="font-size: 12px">Compte: {{ app.user.username }}</div>
+</div>
 
 <div class="admin">
     <div class="admin__aside">
@@ -35,7 +44,9 @@
                 <li class="admin__nav_item {% if 'serie' in app.request.uri %} active{% endif %}"><a
                             href="{{ path('app_admin_serie_index') }}">Séries</a></li>
                 <li class="admin__nav_item {% if 'user' in app.request.uri %} active{% endif %}"><a
-                            href="{{ path('app_admin_user_index') }}">Utilisateur</a></li>
+                            href="{{ path('app_admin_user_index') }}">Utilisateurs</a></li>
+                <li class="admin__nav_item {% if 'comment' in app.request.uri %} active{% endif %}"><a
+                            href="{{ path('app_admin_comment_index') }}">Commentaires</a></li>
             </ul>
         </nav>
         <div class="text-center"><a href="{{ path('app_logout') }}">Se déconnecter</a></div>

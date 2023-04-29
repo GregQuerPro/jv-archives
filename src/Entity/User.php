@@ -9,7 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -22,6 +23,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank(message: 'Veuillez saisir une adresse e-mail.')]
+    #[Assert\Email(message: 'Veuillez saisir une adresse e-mail valide.')]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
@@ -32,8 +35,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Veuillez saisir un mot de passe.')]
+    #[Assert\Length(
+        min: 6,
+        max: 30,
+        minMessage: 'Le mot de passe doit contenir au moins {{ limit }} caractères.',
+        maxMessage: 'Le mot de passe doit contenir au maximum {{ limit }} caractères.'
+    )]
     private ?string $password = null;
 
+    #[Assert\NotBlank(message: 'Veuillez saisir un mot de passe.')]
+    #[Assert\Length(
+        min: 6,
+        max: 30,
+        minMessage: "Le nom d'utilisateur doit contenir au minimum {{ limit }} caractères.",
+        maxMessage: "Le nom d'utilisateur doit contenir au maximum {{ limit }} caractères."
+    )]
     #[ORM\Column(length: 50)]
     private ?string $username = null;
 
