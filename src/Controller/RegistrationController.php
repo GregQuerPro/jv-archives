@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Form\UserType;
 use App\Services\Slugifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,24 +16,28 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
+    #[Route('/inscription', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, Slugifier $slugifier): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+
+//        var_dump($_POST);
+//        var_dump($form->isSubmitted() && $form->isValid());
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setPassword(
+            $user
+                ->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
-            );
+            )
+                ->setRoles(["ROLE_USER"]);
 
-            $user = $slugifier->slugifyUserName($user);
-            $user->setRoles(['ROLE_USER']);
+            $slugifier->slugifyUserName($user);
 
             $entityManager->persist($user);
             $entityManager->flush();

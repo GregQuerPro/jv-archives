@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArchivesController!{% endblock %}
+
+{% block body %}
+    <h1>Liste des séries</h1>
+    {% for serie in series %}
+        <p>{{ serie.name }}</p>
+    {% endfor %}
+{% endblock %}
