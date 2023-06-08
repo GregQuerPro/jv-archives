@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArchivesController!{% endblock %}
+{% block title %}{{ console.metaTitle }}{% endblock %}
+{% block description %}{{ console.metaDescription }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/gregquer/jv-archives/src/Controller/ArchivesController.php'|file_link(0) }}">src/Controller/ArchivesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/gregquer/jv-archives/templates/archives/index.html.twig'|file_link(0) }}">templates/archives/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <h1 class="page__h1 font__1">{{ console.name }}</h1>
+    <div class="page__hero wrapper-70 section">
+        <img src="{{ vich_uploader_asset(console, 'imageFile') }}" alt="{{ console.name }}">
+    </div>
+    <section class="section">
+        {% if articles is not empty %}
+            <div class="grid-4 gap-4">
+                {% for item in articles %}
+                    {{ include('components/_card.html.twig') }}
+                {% endfor %}
+            </div>
+            {% else %}
+            <div>Aucun article trouvé :(</div>
+        {% endif %}
+    </section>
+    <div class="navigation">
+        {{ knp_pagination_render(articles) }}
+    </div>
 {% endblock %}

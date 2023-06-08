@@ -2,12 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <meta type="description" content="metadescription de la home">
+    <title>{% block title %}Jeu Vidéo Archives{% endblock %}</title>
+    <meta type="name"
+          content="{% block description %}Site de jeu vidéo pour tout savoir du passé, du présent et du futur du jeu vidéo{% endblock %}">
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
@@ -22,40 +27,93 @@
 </head>
 <body>
 
-<header>
-    <nav>
-        <ul style="display: flex">
-            <li>
-                <div>
-                    <div>Plateforme</div>
-                    <div>
-                        <div>PC</div>
-                        <div>Switch</div>
-                        <div>Playstation</div>
-                        <div>Xbox</div>
-                        <div>Voir tout</div>
-                    </div>
+<header class="header">
+    <nav class="wrapper-90 h-100 max-width flex flex-jc-sb flex-ai-c">
+        <ul class="header__menu_main">
+            <li class="header__list"><a href="{{ path('app_home') }}" class="font__1">JV Archives</a></li>
+            <li class="header__list">
+                <div class="header__main font__2">
+                    <span>Plateformes</span>
+                    <span class="header__icon_ctn"><img src="{{ asset('images/general/arrow-down.svg') }}"
+                                                        alt="fleche-icone"></span>
                 </div>
+                <ul class="header__submenu">
+                    {% for topConsole in topConsoles %}
+                        <li class="header__submenu_item"><a
+                                    href="{{ path('app_console', {'slug': topConsole.slug}) }}">{{ topConsole.name }}</a>
+                        </li>
+                    {% endfor %}
+                    <li class="header__submenu_item"><a href="{{ path('app_consoles') }}">Voir tout</a></li>
+                </ul>
             </li>
-            <li><a href="{{ path('app_home') }}">JV Archives</a></li>
-            <li>
-                <div>
-                    <div>Séries</div>
-                    <div>
-                        <div>Mario</div>
-                        <div>Zelda</div>
-                        <div>Metroid</div>
-                        <div>Final Fantasy</div>
-                        <div>Voir tout</div>
-                    </div>
+            <li class="header__list">
+                <div class="header__main font__2">
+                    <span>Séries</span>
+                    <span class="header__icon_ctn"><img src="{{ asset('images/general/arrow-down.svg') }}"
+                                                        alt="fleche-icone"></span>
                 </div>
+                <ul class="header__submenu">
+                    {% for topSerie in topSeries %}
+                        <li class="header__submenu_item"><a
+                                    href="{{ path('app_serie', {'slug': topSerie.slug}) }}">{{ topSerie.name }}</a>
+                        </li>
+                    {% endfor %}
+                    <li class="header__submenu_item"><a href="{{ path('app_series') }}">Voir tout</a></li>
+                </ul>
             </li>
         </ul>
+        {% if is_granted('ROLE_USER') %}
+            <div class="header__menu_aside">
+                <div class="margin-r-1">
+                    <a href="{{ path('app_account') }}">{{ app.user.username }}</a>
+                </div>
+                <div class="header__user_img">
+                    <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="image utilisateur">
+                </div>
+            </div>
+        {% else %}
+            <div class="header__menu_aside"><a href="{{ path('app_login') }}">Connexion</a></div>
+        {% endif %}
     </nav>
 </header>
 
-<div class="container">
-{% block body %}{% endblock %}
+<main class="main wrapper-90">
+    {% block body %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <div class="wrapper-90 max-width flex flex-jc-sb">
+        <ul>
+            {% for topConsole in topConsoles %}
+                <li class="footer__submenu_item"><a
+                            href="{{ path('app_console', {'slug': topConsole.slug}) }}">{{ topConsole.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <h3>© JV Archives 2023</h3>
+        <ul>
+            {% for topSerie in topSeries %}
+                <li class="footer__submenu_item"><a
+                            href="{{ path('app_serie', {'slug': topSerie.slug}) }}">{{ topSerie.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</footer>
+
+{% if is_granted('ROLE_ADMIN') %}
+    <div class="admin__link"><a href="{{ path('app_admin') }}">Aller à l'admin</a></div>
+{% endif %}
+
+<div>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div {{ react_component('Flash', { 'label': label, 'message': message }) }}>
+                Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+            </div>
+        {% endfor %}
+    {% endfor %}
 </div>
+
 </body>
 </html>

@@ -1,0 +1,17 @@
+<turbo-frame id="the_frame_id">
+    <div>
+        <form method="POST">
+            <input type="hidden" name="article" value="1">
+            <p>
+                <label for="content">Contenu</label><br>
+                <input name="content" id="content">
+            </p>
+            <button type="submit">Valider</button>
+        </form>
+    </div>
+    <div>
+        {% for comment in comments %}
+            <div>{{ comment.content }}</div>
+        {% endfor %}
+    </div>
+</turbo-frame>

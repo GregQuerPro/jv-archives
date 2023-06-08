@@ -1,20 +1,74 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!{% endblock %}
+{% block title %}{{ article.metaTitle }}{% endblock %}
+{% block description %}{{ article.metaDescription }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/gregquer/jv-archives/src/Controller/ArticleController.php'|file_link(0) }}">src/Controller/ArticleController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/gregquer/jv-archives/templates/article/index.html.twig'|file_link(0) }}">templates/article/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="page__hero--article">
+        <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.title }}">
+    </div>
+    <div class="article__infos flex flex-jc-sb">
+        <div class="card__console_ctn">
+            {% for console in article.consoles %}
+                <div class="card__console" style="background-color: {{ console.color }}"><a
+                            href="{{ path('app_console', {'slug': console.slug}) }}">{{ console.name }}</a></div>
+            {% endfor %}
+        </div>
+        <div>{{ article.createdAt|date('d/m') }}</div>
+    </div>
+    <article class="article section wrapper-70">
+        <h1 class="article__title margin-b-">{{ article.title }}</h1>
+        <div class="article__content">{{ article.content|raw }}</div>
+        <div class="article__infos_bottom">
+            <span>Auteur: {% if article.author != null %}
+                    {{ article.author }}
+                {% else %}
+                    Anonyme
+                {% endif %}</span>
+        </div>
+    </article>
+    <section class="section">
+        <div class="grid-4 gap-4">
+            {% for item in similarArticles %}
+                {{ include('components/_card.html.twig') }}
+            {% endfor %}
+        </div>
+    </section>
+    <section class="wrapper-70">
+        <turbo-frame id="the_frame_id">
+            {% if is_granted('ROLE_USER') %}
+                <div>
+                    {{ form_start(form) }}
+                    {{ form_row(form.content) }}
+                    <button type="submit" class="btn btn-primary">{{ button_label|default('Envoyer') }}</button>
+                    {{ form_end(form) }}
+                </div>
+            {% else %}
+                <div>Vous devez avoir un compte et être connecté pour poster un commentaire</div>
+            {% endif %}
+            <div class="margin-t-5">
+                {% for comment in comments %}
+                <div class="comment">
+                    <div class="comment__top">
+                        <div style="display: flex; align-items: center;">
+                            <span>{% if comment.author != null %}
+                            {{ comment.author }}
+                                {% else %}
+                                    Anonyme
+                                {% endif %}</span><span>-</span><span>{{ comment.createdAt|date('d/m') }}</span>
+                        </div>
+                        {% if comment.author == app.user and comment.author != null or is_granted('ROLE_ADMIN')%}
+                            <form method="post" action="{{ path('app_delete_comment', {'id': comment.id}) }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                    <div class="comment__body">{{ comment.content|raw }}</div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </turbo-frame>
+    </section>
 {% endblock %}

@@ -1,4 +1,4 @@
-{# templates/login/index.html.twig #}
+{# templates/login/console.html.twig #}
 {% extends 'base.html.twig' %}
 
 {# ... #}
@@ -8,18 +8,34 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <div class="position-absolute top-50 start-50 translate-middle bg-light p-4 rounded shadow-sm" style="width: 400px;">
-        <form action="{{ path('app_login') }}" method="post">
-            <div class="mb-4">
-                <label for="username">Email:</label><br>
-                <input type="text" id="username" name="_username" value="{{ last_username }}" style="width: 100%">
-            </div>
-            <div class="mb-4">
-                <label for="password">Mot de passe:</label><br>
-                <input type="password" id="password" name="_password" style="width: 100%">
-            </div>
+    <div>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div {{ react_component('Flash', { 'label': label, 'message': message }) }}>
+                    Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
 
-            <button type="submit" class="btn btn-primary">login</button>
-        </form>
+    <div class="auth">
+        <div>
+            <div class="auth__card" style="width: 400px;">
+                <form action="{{ path('app_login') }}" method="post">
+                    <div class="mb-4">
+                        <label for="username">Email:</label><br>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}"
+                               style="width: 100%">
+                    </div>
+                    <div class="mb-4">
+                        <label for="password">Mot de passe:</label><br>
+                        <input type="password" id="password" name="_password" style="width: 100%">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">login</button>
+                </form>
+            </div>
+            <p class="new__account">Pas de compte ? <span><a href="{{ path('app_register') }}" style="color: #00FF00">Créez le dès maintenant</a></span></p>
+        </div>
     </div>
 {% endblock %}

@@ -1,0 +1,26 @@
+.page__h1 {
+  padding: 2.5rem 0;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.page__hero {
+  height: 375px;
+  margin-bottom: 10rem !important;
+}
+
+.page__hero--article {
+  height: 375px;
+  margin-bottom: 2rem;
+}
+
+.page__hero > img, .page__hero--article > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.section {
+  margin-bottom: 5rem;
+}
+

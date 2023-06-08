@@ -11,6 +11,7 @@ class OfflineController extends AbstractController
     #[Route('/offline', name: 'app_offline')]
     public function index(): Response
     {
+        header('Access-Control-Allow-Origin: *');
         return $this->render('offline/console.html.twig');
     }
 }

@@ -1,0 +1,15 @@
+input[name="duration"] {
+  display: none;
+}
+
+input[name="duration"] + label {
+  color: $white;
+  padding: 1rem;
+  border: 1px solid $grey;
+  cursor: pointer;
+}
+
+input[name="duration"]:checked + label {
+  color: $color_primary;
+  border: 1px solid $color_primary;
+}

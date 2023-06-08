@@ -7,40 +7,47 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 #[Vich\Uploadable]
 class Media
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['user'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 10)]
+    #[Groups(['user'])]
     private ?string $type = null;
 
-    #[Vich\UploadableField(mapping: 'articles', fileNameProperty: 'imageName', size: 'imageSize')]
+    #[Vich\UploadableField(mapping: 'users', fileNameProperty: 'imageName', size: 'imageSize')]
     #[Assert\Image(maxSize: '4M', maxSizeMessage: "L'image ne doit pas dépasser {{ limit }}.")]
     private ?File $imageFile = null;
 
-    #[ORM\Column(nullable: true)]
+    #[Groups(['user'])]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $imageName = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['user'])]
     private ?int $imageSize = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['user'])]
     private ?string $imageAlt = null;
 
     #[ORM\Column]
+    #[Groups(['user'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
+    #[Groups(['user'])]
     private ?\DateTimeImmutable $updatedAt = null;
-
-    #[ORM\OneToOne(mappedBy: 'photo', cascade: ['persist', 'remove'])]
-    private ?User $_user = null;
 
     public function getId(): ?int
     {
@@ -129,28 +136,6 @@ class Media
     public function setUpdatedAt(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->_user;
-    }
-
-    public function setUser(?User $_user): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($_user === null && $this->_user !== null) {
-            $this->_user->setPhoto(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($_user !== null && $_user->getPhoto() !== $this) {
-            $_user->setPhoto($this);
-        }
-
-        $this->_user = $_user;
-
-        return $this;
     }
 
 }

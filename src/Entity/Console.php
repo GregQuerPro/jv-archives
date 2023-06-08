@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 
 #[ORM\Entity(repositoryClass: ConsoleRepository::class)]
@@ -47,6 +48,7 @@ class Console
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'consoles')]
+    #[Ignore]
     private Collection $articles;
 
     #[Vich\UploadableField(mapping: 'consoles', fileNameProperty: 'imageName', size: 'imageSize')]
@@ -78,6 +80,12 @@ class Console
     )]
     #[ORM\Column(length: 180)]
     private ?string $metaDescription = null;
+
+    #[ORM\Column(length: 20)]
+    private ?string $color = null;
+
+    #[ORM\Column(options: ["default" => false])]
+    private ?bool $display = false;
 
     public function __construct()
     {
@@ -224,6 +232,30 @@ class Console
     public function setMetaDescription(string $metaDescription): self
     {
         $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function isDisplay(): ?bool
+    {
+        return $this->display;
+    }
+
+    public function setDisplay(bool $display): self
+    {
+        $this->display = $display;
 
         return $this;
     }

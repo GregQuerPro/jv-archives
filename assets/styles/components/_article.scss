@@ -1,0 +1,33 @@
+.article__infos {
+  border-bottom: 1px solid $color_primary;
+  padding-bottom: 1.6rem;
+  margin-bottom: 4rem;
+}
+
+.article__infos_bottom {
+  border-top: 1px solid $color_primary;
+  padding-top: 1.6rem;
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+}
+
+.article__title {
+  text-align: left;
+  margin-bottom: 5rem;
+  font-size: 3.2rem;
+  line-height: 6.2rem;
+}
+
+.article p {
+  font-size: 1.4rem;
+  margin-bottom: 3rem;
+  line-height: 2.4rem;
+  overflow-wrap: anywhere;
+}
+
+.article h2 {
+  font-size: 2.4rem;
+  margin-top: 7rem;
+  margin-bottom: 5rem;
+  line-height: 4.2rem;
+}

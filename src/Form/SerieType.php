@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Serie;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -36,6 +37,11 @@ class SerieType extends AbstractType
                 'label' => "Image mise en avant",
                 "download_label" => "Télécharger cette image",
                 'error_bubbling' => false
+            ])
+            ->add('display', CheckboxType::class, [
+                'label' => 'Afficher cette série dans les menus',
+                'error_bubbling' => false,
+                'required' => false
             ]);
     }
 

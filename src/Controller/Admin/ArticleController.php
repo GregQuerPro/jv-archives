@@ -90,8 +90,6 @@ class ArticleController extends AbstractController
             }
             $articleRepository->save($article, true);
 
-
-//            dd('test');
             $this->addFlash(
                 'success',
                 'Votre contenu a bien été mise à jour !'

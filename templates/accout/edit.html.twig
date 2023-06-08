@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte utilisateur{% endblock %}
+
+{% block body %}
+    <div class="margin-b-5">
+        <h1 class="font__1">Modifier les informations de mon compte</h1>
+    </div>
+    <div>
+        {{ form_start(formProfil) }}
+        {{ form_row(formProfil.username) }}
+        {{ form_row(formProfil.email) }}
+        {{ form_row(formProfil.imageFile) }}
+        <button type="submit" class="button margin-t-1">Valider</button>
+        {{ form_end(formProfil) }}
+    </div>
+    <h2 class="margin-t-4 margin-b-2">Modifier votre mot de passe</h2>
+    <div>
+        {{ form_start(formNewPassword) }}
+        {{ form_row(formNewPassword.password) }}
+        {{ form_errors(formNewPassword) }}
+        <button type="submit" class="button margin-t-1">Valider</button>
+        {{ form_end(formNewPassword) }}
+    </div>
+{% endblock %}

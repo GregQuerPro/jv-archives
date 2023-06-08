@@ -3,13 +3,39 @@
 {% block title %}JV Archives - L'archives des JV{% endblock %}
 
 {% block body %}
-<h1>Accueil</h1>
+    <h1 class="page__h1 font__1">Le passé, le présent et le futur du Jeu Vidéo</h1>
+    <section class="section">
+        <div class="grid-4 gap-4">
+            {% for item in articles %}
+                {{ include('components/_card.html.twig') }}
+            {% endfor %}
+        </div>
+        <div class="button__ctn">
+            <a href="{{ path('app_blog') }}" class="button">Voir tous les articles</a>
+        </div>
+    </section>
 
-    <div>
-        {% for article in articles %}
-            <div>
-                <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.title }}">
-            </div>
-        {% endfor %}
-    </div>
+    <section class="section">
+        <div class="wrapper-70 grid-4 gap-4">
+            {% for item in topConsoles %}
+                {{ include('components/_bloc.html.twig', {'route': 'app_console'}) }}
+            {% endfor %}
+        </div>
+        <div class="button__ctn">
+            <a href="{{ path('app_consoles') }}" class="button">Voir toutes les consoles</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="wrapper-70 grid-4 gap-4">
+            {% for item in topSeries %}
+                {{ include('components/_bloc.html.twig', {'route': 'app_serie'}) }}
+            {% endfor %}
+        </div>
+        <div class="button__ctn">
+            <a href="{{ path('app_series') }}" class="button">Voir toutes les séries</a>
+        </div>
+    </section>
+
 {% endblock %}
+

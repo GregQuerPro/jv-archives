@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Ignore;
+
 
 #[ORM\Entity(repositoryClass: CommentaireRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -27,27 +29,18 @@ class Commentaire
     private ?string $content = null;
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    #[ORM\JoinColumn(name:"author_id", referencedColumnName:"id", onDelete:"SET NULL")]
     private ?User $author = null;
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    #[Ignore]
     private ?Article $article = null;
-
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'enfants')]
-    private ?self $parent = null;
-
-    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
-    private Collection $enfants;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
-
-    public function __construct()
-    {
-        $this->enfants = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -95,48 +88,6 @@ class Commentaire
         return $this;
     }
 
-    public function getParent(): ?self
-    {
-        return $this->parent;
-    }
-
-    public function setParent(?self $parent): self
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, self>
-     */
-    public function getEnfants(): Collection
-    {
-        return $this->enfants;
-    }
-
-    public function addEnfant(self $enfant): self
-    {
-        if (!$this->enfants->contains($enfant)) {
-            $this->enfants->add($enfant);
-            $enfant->setParent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEnfant(self $enfant): self
-    {
-        if ($this->enfants->removeElement($enfant)) {
-            // set the owning side to null (unless already changed)
-            if ($enfant->getParent() === $this) {
-                $enfant->setParent(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
@@ -146,6 +97,31 @@ class Commentaire
     public function setCreatedAt(): void
     {
         $this->createdAt = new \DateTimeImmutable();
+    }
+
+    public function createdSince()
+    {
+        $now = new \DateTimeImmutable();
+        $diff = $this->createdAt->diff($now);
+
+        $parts = [];
+        if ($diff->y) {
+            $parts[] = $diff->y . ' an' . ($diff->y > 1 ? 's' : '');
+        }
+        if ($diff->m) {
+            $parts[] = $diff->m . ' mois';
+        }
+        if ($diff->d) {
+            $parts[] = $diff->d . ' jour' . ($diff->d > 1 ? 's' : '');
+        }
+        if ($diff->h) {
+            $parts[] = $diff->h . 'h';
+        }
+        if ($diff->i) {
+            $parts[] = $diff->i . 'min';
+        }
+
+        return implode('', $parts);
     }
 
     public function getUpdatedAt(): ?\DateTimeImmutable

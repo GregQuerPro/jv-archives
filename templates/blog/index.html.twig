@@ -3,18 +3,36 @@
 {% block title %}Hello BlogController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/gregquer/jv-archives/src/Controller/BlogController.php'|file_link(0) }}">src/Controller/BlogController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/gregquer/jv-archives/templates/blog/index.html.twig'|file_link(0) }}">templates/blog/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <h1 class="page__h1 font__1">Tous les articles</h1>
+    <section class="section">
+        <div class="grid-4 gap-4">
+            {% for article in articles %}
+                <div class="card">
+                    <div class="card__top">
+                        <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.title }}">
+                    </div>
+                    <div class="card__body">
+                        <div class="card__upper_body">
+                            <a href="{{ path('app_article', {'slug' : article.slug}) }}">
+                                <p class="card__title font__sm">{{ article.title }}</p>
+                            </a>
+                        </div>
+                        <div class="card__down_body">
+                            <div class="card__console_ctn">
+                                {% for console in article.consoles %}
+                                    <div class="card__console" style="background-color: {{ console.color }}"><a
+                                                href="{{ path('app_console', {'slug': console.slug}) }}">{{ console.name }}</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="card__date">{{ article.createdAt|date('d/m') }}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <div class="navigation">
+        {{ knp_pagination_render(articles) }}
+    </div>
 {% endblock %}

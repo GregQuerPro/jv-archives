@@ -1,0 +1,36 @@
+.button {
+  padding: 1.4rem 2rem;
+  background-color: transparent;
+  color: $white;
+  border-top: 1px solid $grey;
+  border-left: 1px solid $grey;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+}
+
+.button:hover {
+  background-color: #f0f0f0;
+  outline: 1px solid $white;
+  color: $black;
+}
+
+.button__ctn {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.6rem;
+}
+
+.button__comment_delete {
+  background-color: transparent;
+  color: $black;
+  border-top: 1px solid $grey;
+  border-left: 1px solid $grey;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+}
+
+.button__comment_delete:hover {
+  background-color: #f0f0f0;
+  outline: 1px solid $white;
+  color: $black;
+}

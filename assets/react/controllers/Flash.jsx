@@ -6,7 +6,7 @@ export default function Component({label, message}) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsActive(false);
-    }, 2000);
+    }, 200000);
 
     return () => clearTimeout(timer);
   }, []);

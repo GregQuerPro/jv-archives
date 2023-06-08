@@ -1,0 +1,39 @@
+.bloc {
+  position: relative;
+}
+
+.bloc__link {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.bloc__link:hover ~  .bloc__body {
+  color: $color_primary;
+}
+
+.bloc__top {
+  height: 180px;
+  position: relative;
+}
+
+.bloc__top > img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.bloc__body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: $black;
+  font-size: $fs-sm;
+  display: flex;
+  justify-content: center;
+}
+

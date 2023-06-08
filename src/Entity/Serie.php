@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 #[ORM\Entity(repositoryClass: SerieRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -46,6 +47,7 @@ class Serie
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\OneToMany(mappedBy: 'serie', targetEntity: Article::class)]
+    #[Ignore]
     private Collection $articles;
 
     #[Vich\UploadableField(mapping: 'series', fileNameProperty: 'imageName', size: 'imageSize')]
@@ -77,6 +79,10 @@ class Serie
     )]
     #[ORM\Column(length: 180)]
     private ?string $metaDescription = null;
+
+
+    #[ORM\Column(options: ["default" => false])]
+    private ?bool $display = false;
 
     public function __construct()
     {
@@ -226,6 +232,18 @@ class Serie
     public function setMetaDescription(string $metaDescription): self
     {
         $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    public function isDisplay(): ?bool
+    {
+        return $this->display;
+    }
+
+    public function setDisplay(bool $display): self
+    {
+        $this->display = $display;
 
         return $this;
     }

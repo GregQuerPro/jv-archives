@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card__top">
+        <img src="{{ vich_uploader_asset(item, 'imageFile') }}" alt="{{ item.title }}">
+    </div>
+    <div class="card__body">
+        <div class="card__upper_body">
+            <a href="{{ path('app_article', {'slug' : item.slug}) }}" class="card__link"></a>
+            <p class="card__title font__sm">{{ item.title }}</p>
+        </div>
+        <div class="card__down_body">
+            <div class="card__console_ctn">
+                {% for console in item.consoles %}
+                    <div class="card__console" style="background-color: {{ console.color }}"><a
+                                href="{{ path('app_console', {'slug': console.slug}) }}">{{ console.name }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="card__date">{{ item.createdAt|date('d/m') }}</div>
+        </div>
+    </div>
+</div>

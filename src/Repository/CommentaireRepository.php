@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Commentaire;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @extends ServiceEntityRepository<Commentaire>
@@ -49,10 +52,46 @@ class CommentaireRepository extends ServiceEntityRepository
             ->where("c.author = :userID")
             ->setParameter('userID', $id)
             ->orderBy('c.id', 'ASC')
-            ->setMaxResults(5)
+            ->setMaxResults(12)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
+    }
+
+    public function findAllLastComments(UserInterface $user): Query
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.author', 'u')
+            ->where("c.author = :user")
+            ->setParameter("user", $user)
+            ->orderBy('c.updatedAt', 'DESC')
+            ->getQuery();
+    }
+
+    public function findLastCommentsByDuration(UserInterface $user, string $duration): Query
+    {
+
+
+        $date = (new \DateTime())->sub(\DateInterval::createFromDateString("1 $duration"));
+        $date = $date->format('Y-m-d H:i:s');
+
+        return $this->createQueryBuilder('c')
+            ->join('c.author', 'u')
+            ->andWhere('c.author = :user')
+            ->setParameter('user', $user)
+            ->andWhere('c.updatedAt <= :date')
+            ->setParameter('date', $date)
+            ->orderBy('c.updatedAt', 'DESC')
+            ->getQuery();
+    }
+
+    public function removeAllByUser(UserInterface $user): void
+    {
+        $this->createQueryBuilder('c')
+            ->delete('App\Entity\Commentaire', 'c')
+            ->where('c.author = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->execute();
     }
 
 //    public function findOneBySomeField($value): ?Commentaire

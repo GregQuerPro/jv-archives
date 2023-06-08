@@ -3,15 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
-use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -62,13 +61,16 @@ class Article
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name:"author_id", referencedColumnName:"id", onDelete:"SET NULL")]
+    #[Ignore]
     private ?User $author = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[Ignore]
     private ?Serie $serie = null;
 
     #[ORM\ManyToMany(targetEntity: Console::class, inversedBy: 'articles')]
+    #[Ignore]
     private Collection $consoles;
 
     #[Vich\UploadableField(mapping: 'articles', fileNameProperty: 'imageName', size: 'imageSize')]
@@ -101,7 +103,7 @@ class Article
     #[ORM\Column(length: 180)]
     private ?string $metaDescription = null;
 
-    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Commentaire::class)]
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Commentaire::class, cascade: ["persist"])]
     private Collection $commentaires;
 
 

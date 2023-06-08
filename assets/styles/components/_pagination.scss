@@ -1,0 +1,12 @@
+.page-item.active > .page-link {
+  background: $color-primary !important;
+  border: 1px solid $color_primary;
+}
+
+.page-item > .page-link {
+  color: $black !important;
+}
+
+.navigation {
+  color: $color-primary !important;
+}

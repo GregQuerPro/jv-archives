@@ -1,7 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArchivesController!{% endblock %}
+{% block title %}{{ serie.metaTitle }}{% endblock %}
+{% block description %}{{ serie.metaDescription }}{% endblock %}
 
 {% block body %}
-    <h1>{{ console.name }}</h1>
+    <h1 class="page__h1 font__1">{{ serie.name }}</h1>
+    <div class="page__hero wrapper-70 section">
+        <img src="{{ vich_uploader_asset(serie, 'imageFile') }}" alt="{{ serie.name }}">
+    </div>
+    <section class="section">
+        {% if articles is not empty %}
+        <div class="grid-4 gap-4">
+            {% for item in articles %}
+                {{ include('components/_card.html.twig') }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+    <div class="navigation">
+        {{ knp_pagination_render(articles) }}
+    </div>
 {% endblock %}
