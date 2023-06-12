@@ -39,20 +39,32 @@ class ConsoleRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Console[] Returns an array of Console objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Console[] Returns an array of Console objects
+     */
+    public function findTopConsoles(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.display = :val')
+            ->setParameter('val', true)
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Console[] Returns an array of Console objects
+     */
+    public function findConsolesInAlphaOrder(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.name', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Console
 //    {

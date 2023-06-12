@@ -1,0 +1,57 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Utilisateur</h1>
+
+    <div class="mb-4">
+        <div class="d-flex justify-content-end">
+            <div class="m-1">
+                <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}" class="btn btn-primary">Editer</a>
+            </div>
+            <div class="m-1">
+                {{ include('admin/user/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <th>Slug</th>
+            <td>{{ user.slug }}</td>
+        </tr>
+        <tr>
+            <th>Création</th>
+            <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Mise à jour</th>
+            <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row mt-5">
+        <h2 class="mb-5">Les 5 derniers commentaires de: {{ user.username }}</h2>
+        <div class="row">
+            {% for comment in lastComments %}
+                <div class="col-8 mb-4 p-4 shadow-sm bg-light border border-dark rounded">
+                    <div>
+                        {{ comment.content|raw }}
+                    </div>
+                    <div>
+                        Commenté l'article: {{ comment.article.title }}
+                    </div>
+                </div>
+                <div class="col-4"></div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

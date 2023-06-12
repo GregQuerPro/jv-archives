@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ console.metaTitle }}{% endblock %}
+{% block description %}{{ console.metaDescription }}{% endblock %}
+
+{% block body %}
+    <h1 class="page__h1 font__1">{{ console.name }}</h1>
+    <div class="page__hero wrapper-70 section">
+        <img src="{{ vich_uploader_asset(console, 'imageFile') }}" alt="{{ console.name }}">
+    </div>
+    <section class="section">
+        {% if articles is not empty %}
+            <div class="grid-4 gap-4">
+                {% for item in articles %}
+                    {{ include('components/_card.html.twig') }}
+                {% endfor %}
+            </div>
+            {% else %}
+            <div>Aucun article trouvé :(</div>
+        {% endif %}
+    </section>
+    <div class="navigation">
+        {{ knp_pagination_render(articles) }}
+    </div>
+{% endblock %}

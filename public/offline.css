@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: black;
+    margin: 0;
+    font-family: IBM Plex Mono, serif;
+}
+
+.header {
+    background: #00FF00;
+    height: 80px;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.content {
+    width: 70%;
+    margin: auto;
+    color: #cecece;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+.container {
+    max-width: 1020px;
+    min-height: 100vh;
+    margin: 5rem auto;
+    width: 95%;
+    background: #161616;
+    padding: 3rem;
+    color: white;
+}
+
+.wrapper-70 {
+    width: 70%;
+    margin: auto;
+}
+
+.article__title {
+    line-height: 5rem;
+    font-size: 3.2rem;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 5rem;
+    margin-top: 4rem;
+    font-weight: 500;
+}
+
+.article p {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    line-height: 2.4rem;
+}
+
+.article h2 {
+    font-size: 2.4rem;
+    margin-top: 7rem;
+    margin-bottom: 5rem;
+    line-height: 4.2rem;
+    font-weight: 500;
+}

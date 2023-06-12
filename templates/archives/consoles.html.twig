@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de toutes les consoles de jeu vidéo{% endblock %}
+{% block description %}Retrouvez la liste de toutes les consoles de jeu vidéo pour trouver les articles associés{% endblock %}
+
+{% block body %}
+    <h1 class="page__h1 font__1">Liste de toutes les consoles</h1>
+    <section class="section">
+        <div class="grid-6 gap-4">
+            {% for item in consoles %}
+                {{ include('components/_bloc.html.twig', {'route':'app_console'}) }}
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,41 @@
+$grid-sizes: (
+        1: 8.3333%,
+        2: 16.6667%,
+        3: 25%,
+        4: 33.3333%,
+        5: 41.6667%,
+        6: 50%,
+        7: 58.3333%,
+        8: 66.6667%,
+        9: 75%,
+        10: 83.3333%,
+        11: 91.6667%,
+        12: 100%
+);
+
+// Boucle pour générer les classes .grid-1 à .grid-12
+@each $size, $width in $grid-sizes {
+  .grid-#{$size} {
+    display: grid;
+    grid-template-columns: repeat(#{$size}, minmax(0, #{$width}));
+    justify-items: center;
+    align-items: center;
+  }
+}
+
+// Définition des tailles d'espacement
+$gap-sizes: (
+        1: 1rem,
+        2: 2rem,
+        3: 3rem,
+        4: 4rem,
+        5: 5rem
+);
+
+// Boucle pour générer les classes .gap-1 à .gap-5
+@each $size, $gap in $gap-sizes {
+  .gap-#{$size} {
+    gap: $gap;
+  }
+}
+

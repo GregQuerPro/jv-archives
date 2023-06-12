@@ -1,0 +1,8 @@
+<div class="bloc">
+    <div class="bloc__top">
+        <img src="{{ vich_uploader_asset(item, 'imageFile') }}" alt="{{ item.name }}">
+        <a href="{{ path(route, {'slug' : item.slug}) }}" class="bloc__link"></a>
+        <div class="bloc__body">{{ item.name }}
+        </div>
+    </div>
+</div>

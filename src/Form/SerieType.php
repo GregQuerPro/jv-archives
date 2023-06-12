@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Serie;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,16 +16,33 @@ class SerieType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Titre'
+                'label' => 'Titre',
+                'error_bubbling' => false,
             ])
-            ->add('slug')
+            ->add('slug', TextType::class, [
+                'label' => 'Slug',
+                'error_bubbling' => false,
+            ])
+            ->add('metaTitle', TextType::class, [
+                'label' => 'Meta Title',
+                'error_bubbling' => false,
+            ])
+            ->add('metaDescription', TextType::class, [
+                'label' => 'Meta Description',
+                'error_bubbling' => false,
+            ])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => false,
                 'label' => "Image mise en avant",
-                "download_label" => "Télécharger cette image"
+                "download_label" => "Télécharger cette image",
+                'error_bubbling' => false
             ])
-        ;
+            ->add('display', CheckboxType::class, [
+                'label' => 'Afficher cette série dans les menus',
+                'error_bubbling' => false,
+                'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

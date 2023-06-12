@@ -1,0 +1,16 @@
+{
+  "name": "Mon application JV Archives",
+  "short_name": "App JV Archives",
+  "description": "Ma description de mon app JV Archives",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icone.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#00FF00",
+  "theme_color": "#0034BB"
+}

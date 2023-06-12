@@ -39,20 +39,58 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Article[] Returns an array of Article objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Article[] Returns an array of Article objects
+     */
+    public function findLastArticles(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(8)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Article[] Returns an array of Article objects
+     */
+    public function findLastArticle(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Article[] Returns an array of Article objects
+     */
+    public function findByConsole($console): array
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.consoles', 'c')
+            ->andWhere('c.id = :consoleId')
+            ->setParameter('consoleId', $console->getId())
+            ->orderBy('a.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Article[] Returns an array of Article objects
+     */
+    public function findOtherArticlesBySerie($serie): array
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.serie', 's')
+            ->andWhere('s.id = :serieId')
+            ->setParameter('serieId', $serie->getId())
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
 
 //    public function findOneBySomeField($value): ?Article
 //    {

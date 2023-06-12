@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Serie;
 use App\Form\SerieType;
 use App\Repository\SerieRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class SerieController extends AbstractController
 {
     #[Route('/', name: 'app_admin_serie_index', methods: ['GET'])]
-    public function index(SerieRepository $serieRepository): Response
+    public function index(SerieRepository $serieRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $series = $serieRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $series, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            10 /*limit per page*/
+        );
+
         return $this->render('admin/serie/index.html.twig', [
-            'series' => $serieRepository->findAll(),
+            'series' => $pagination,
         ]);
     }
 
@@ -31,6 +40,10 @@ class SerieController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $serieRepository->save($serie, true);
 
+            $this->addFlash(
+                'success',
+                'Votre contenu a bien été enregistré !'
+            );
             return $this->redirectToRoute('app_admin_serie_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -49,13 +62,18 @@ class SerieController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_serie_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Serie $serie, SerieRepository $serieRepository): Response
+    public function edit(Request $request, Serie $serie, SerieRepository $serieRepository, $id): Response
     {
         $form = $this->createForm(SerieType::class, $serie);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $serieRepository->save($serie, true);
+            $this->addFlash(
+                'success',
+                'Votre contenu a bien été mise à jour !'
+            );
+            return $this->redirectToRoute('app_admin_serie_edit', ['id' => $id], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/serie/edit.html.twig', [
@@ -71,6 +89,10 @@ class SerieController extends AbstractController
             $serieRepository->remove($serie, true);
         }
 
+        $this->addFlash(
+            'danger',
+            'Votre contenu a bien été supprimé !'
+        );
         return $this->redirectToRoute('app_admin_serie_index', [], Response::HTTP_SEE_OTHER);
     }
 }

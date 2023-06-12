@@ -1,0 +1,41 @@
+.footer {
+  padding: 5rem 0;
+  padding-bottom: 2rem;
+  background-color: #161616;
+  color: $white;
+}
+
+.footer__submenu_item {
+  font-size: $fs-md;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.footer > div {
+  display: flex;
+  align-items: center;
+}
+
+.footer a {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  color: inherit;
+}
+
+.footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* écart entre le texte et le soulignement */
+  height: 2px;
+  width: 100%;
+  background-color: $white;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.footer a:hover::after {
+  transform: scaleX(1);
+}

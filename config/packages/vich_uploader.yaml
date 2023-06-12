@@ -11,19 +11,26 @@ vich_uploader:
             upload_destination: '%kernel.project_dir%/public/images/articles'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
             inject_on_load: false
-            delete_on_update: true
+            delete_on_update: false
             delete_on_remove: true
         series:
             uri_prefix: /images/series
             upload_destination: '%kernel.project_dir%/public/images/series'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
             inject_on_load: false
-            delete_on_update: true
+            delete_on_update: false
             delete_on_remove: true
         consoles:
             uri_prefix: /images/consoles
             upload_destination: '%kernel.project_dir%/public/images/consoles'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
             inject_on_load: false
-            delete_on_update: true
+            delete_on_update: false
             delete_on_remove: true
+        users:
+            uri_prefix: /images/users
+            upload_destination: '%kernel.project_dir%/public/images/users'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: false
+            delete_on_remove: false

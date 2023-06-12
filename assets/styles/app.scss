@@ -1,0 +1,158 @@
+@import "base/typography";
+@import "base/variables";
+@import "base/reset";
+@import "base/breakpoints";
+@import "base/shame";
+
+@import "utilities/wrapper";
+@import "utilities/font";
+@import "utilities/grid";
+@import "utilities/layout";
+@import "utilities/spacing";
+
+@import "components/header";
+@import "components/footer";
+@import "components/page";
+@import "components/card";
+@import "components/button";
+@import "components/bloc";
+@import "components/article";
+@import "components/comment";
+@import "components/auth";
+@import "components/input";
+@import "components/pagination";
+
+
+.main {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  height: auto;
+  min-height: calc(100vh - 300px);
+  background-color: #161616;
+  padding: 3.6rem;
+  color: $white;
+  max-width: 1190px;
+}
+
+/*
+ADMIN
+ */
+
+.admin {
+  display: flex;
+}
+
+.admin__link {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: $white;
+  padding: 1rem 2rem;
+}
+
+.admin__aside {
+  background: #1dc9a4;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  width: 150px;
+  padding-top: 10rem;
+}
+
+.admin__content {
+  margin-top: 5rem;
+  margin-left: 150px;
+  width: calc(100vw - 200px);
+  padding: 5rem;
+  background-color: $black !important;
+  color: $white !important;
+}
+
+.admin__nav_item {
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.admin__nav_item.active {
+  list-style-type: circle;
+}
+
+.table__cell {
+  vertical-align: middle;
+}
+
+.vich-image img {
+  width: 400px;
+}
+
+.vich-image input {
+  margin-bottom: 2rem;
+}
+
+.form-check {
+  margin-top: 1rem;
+}
+
+.vich-image a:last-child {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.checkbox_ctn {
+  display: flex;
+}
+
+.form-check {
+  margin-top: 0;
+  margin-right: 1rem;
+}
+
+.sortable, .asc, .desc {
+  position: relative;
+}
+
+/*.sortable:after {*/
+/*    content: '↕';*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    top: -2px;*/
+/*    right: -15px;*/
+/*}*/
+
+.asc:after {
+  content: '↑';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -15px;
+}
+
+.desc:after {
+  content: '↓';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -15px;
+}
+
+.alert.desactivate {
+  display: none;
+}
+
+.flash {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.table * {
+  color: #f0f0f0 !important;
+}

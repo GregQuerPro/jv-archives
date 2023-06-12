@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Console;
 use App\Form\ConsoleType;
 use App\Repository\ConsoleRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConsoleController extends AbstractController
 {
     #[Route('/', name: 'app_admin_console_index', methods: ['GET'])]
-    public function index(ConsoleRepository $consoleRepository): Response
+    public function index(ConsoleRepository $consoleRepository, PaginatorInterface $paginator, Request $request): Response
     {
+
+        $consoles = $consoleRepository->findAll();
+
+        $pagination = $paginator->paginate(
+            $consoles, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            10 /*limit per page*/
+        );
+
         return $this->render('admin/console/index.html.twig', [
-            'consoles' => $consoleRepository->findAll(),
+            'consoles' => $pagination,
         ]);
     }
 
@@ -31,6 +41,11 @@ class ConsoleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $consoleRepository->save($console, true);
 
+
+            $this->addFlash(
+                'success',
+                'Votre contenu a bien été enregistré !'
+            );
             return $this->redirectToRoute('app_admin_console_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -49,13 +64,18 @@ class ConsoleController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_console_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Console $console, ConsoleRepository $consoleRepository): Response
+    public function edit(Request $request, Console $console, ConsoleRepository $consoleRepository, $id): Response
     {
         $form = $this->createForm(ConsoleType::class, $console);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $consoleRepository->save($console, true);
+            $this->addFlash(
+                'success',
+                'Votre contenu a bien été mise à jour !'
+            );
+            return $this->redirectToRoute('app_admin_console_edit', ['id' => $id], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/console/edit.html.twig', [
@@ -67,10 +87,15 @@ class ConsoleController extends AbstractController
     #[Route('/{id}', name: 'app_admin_console_delete', methods: ['POST'])]
     public function delete(Request $request, Console $console, ConsoleRepository $consoleRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$console->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $console->getId(), $request->request->get('_token'))) {
             $consoleRepository->remove($console, true);
         }
 
+
+        $this->addFlash(
+            'danger',
+            'Votre contenu a bien été supprimé !'
+        );
         return $this->redirectToRoute('app_admin_console_index', [], Response::HTTP_SEE_OTHER);
     }
 }

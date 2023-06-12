@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class Slugifier
@@ -12,7 +13,7 @@ class Slugifier
     {
     }
 
-    public function slugifyUserName(User $user): User
+    public function slugifyUserName(UserInterface $user): UserInterface
     {
         $username = $user->getUsername();
         $username = strtolower($username);

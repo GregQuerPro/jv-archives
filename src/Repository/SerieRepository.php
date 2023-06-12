@@ -39,20 +39,32 @@ class SerieRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Serie[] Returns an array of Serie objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Serie[] Returns an array of Serie objects
+     */
+    public function findTopSeries(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.display = :val')
+            ->setParameter('val', true)
+            ->orderBy('s.id', 'ASC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Serie[] Returns an array of Console objects
+     */
+    public function findSeriesInAlphaOrder(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.name', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Serie
 //    {

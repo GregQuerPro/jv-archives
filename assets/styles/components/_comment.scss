@@ -1,0 +1,25 @@
+.comment {
+  margin-bottom: 2rem;
+  color: $black;
+}
+
+.comment__top {
+  padding: .6rem 1.6rem;
+  background-color: $color_primary;
+  color: $black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment__body{
+  padding: 1.4rem;
+  background-color: $white;
+  padding-top: 1.6rem;
+  font-size: $fs-sm;
+}
+
+.comment__article {
+  background-color: #000000;
+  color: #f0f0f0;
+  padding: .4rem 1rem;
+}

@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte utilisateur{% endblock %}
+
+{% block body %}
+    <div class="flex flex-jc-sb flex-ai-c margin-b-5">
+        <h1 class="font__1">{{ user.username }}</h1>
+        <div>
+            <a href="{{ path('app_logout') }}" class="button">Se déconnecter</a>
+            <a href="{{ path('app_account_edit') }}" class="button">Modifier</a>
+        </div>
+    </div>
+    <div>
+        <div class="margin-b-2">Adresse mail: {{ user.email }}</div>
+        <div class="margin-b-5">
+            <p>Photo de profil</p>
+            <div class="profil__ctn">
+                <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="avatar {{ app.user.username }}">
+            </div>
+        </div>
+        <ul>
+            <h2 class="margin-b-3">Historiques de vos commentaires</h2>
+            <div class="margin-b-3">
+                <p>Recherchez vos commentaires qui ont plus de :</p>
+                <form class="margin-b-2" id="duration-form">
+                    <input type="radio" id="year" name="duration"
+                           value="year"
+                           class="input__time" {% if app.request.query.get('duration') == 'year' %} checked {% endif %}>
+                    <label for="year">1 an</label>
+                    <input type="radio" id="month" name="duration"
+                           value="month"
+                           class="input__time" {% if app.request.query.get('duration') == 'month' %} checked {% endif %}>
+                    <label for="month">1 Mois</label>
+                    <input type="radio" id="week" name="duration"
+                           value="week"
+                           class="input__time" {% if app.request.query.get('duration') == 'week' %} checked {% endif %}>
+                    <label for="week">1 Semaine</label>
+                    <input type="radio" id="all-time" name="duration"
+                           value="all-time"
+                           class="input__time" {% if app.request.query.get('duration') == 'all-time' or app.request.query.get('duration') == '' %} checked {% endif %}>
+                    <label for="all-time">Afficher tous les commentaires</label>
+                </form>
+            </div>
+            <div style="width: 70%;">
+                <div class="navigation margin-b-2">
+                    {{ knp_pagination_render(comments) }}
+                </div>
+                <turbo-frame id="last_comments">
+                    {% for comment in comments %}
+                        <div class="comment">
+                            <div class="comment__top">
+                                <div style="display: flex; align-items: center;">
+                                    <span>{{ comment.author }}</span><span>-</span><span>{{ comment.updatedAt|date('d/m/y') }}</span>
+                                </div>
+                                {% if comment.author == app.user %}
+                                    <form method="post" action="{{ path('app_delete_comment', {'id': comment.id}) }}">
+                                        <input type="hidden" name="_token"
+                                               value="{{ csrf_token('delete' ~ comment.id) }}">
+                                        <button class="button__comment_delete">Supprimer</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                            <div class="comment__body">{{ comment.content|raw }}</div>
+                            <div class="comment__article">En réponse à l'article: <a
+                                        href="{{ path('app_article', {'slug' :comment.article.slug }) }}">{{ comment.article.title }}</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p>Aucun commentaires trouvé</p>
+                    {% endfor %}
+                </turbo-frame>
+            </div>
+        </ul>
+        <div>
+            <form method="post" action="{{ path('app_account_delete', {'id': user.id}) }}">
+                <input type="hidden" name="_token"
+                       value="{{ csrf_token('delete' ~ user.id) }}">
+                <button class="button" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?');">Supprimer mon compte</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        document.addEventListener('turbo:load', () => {
+            const durationButtons = document.querySelectorAll('input[name="duration"]');
+            const form = document.querySelector('#duration-form');
+
+            durationButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    form.submit();
+                });
+            });
+        })
+
+
+    </script>
+{% endblock %}

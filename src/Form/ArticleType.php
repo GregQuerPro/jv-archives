@@ -21,17 +21,31 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Titre'
+                'label' => 'Titre',
+                'error_bubbling' => false,
             ])
-            ->add('slug')
+            ->add('slug',TextType::class, [
+                'label' => 'Slug',
+                'error_bubbling' => false,
+            ])
+            ->add('metaTitle', TextType::class, [
+                'label' => 'Meta Title',
+                'error_bubbling' => false,
+            ])
+            ->add('metaDescription',TextType::class, [
+                'label' => 'Meta Description',
+                'error_bubbling' => false,
+            ])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => false,
                 'label' => "Image mise en avant",
-                "download_label" => "Télécharger cette image"
+                "download_label" => "Télécharger cette image",
+                'error_bubbling' => false,
             ])
             ->add('content', CKEditorType::class, [
-                'label' => "Contenu"
+                'label' => "Contenu",
+                'error_bubbling' => false,
             ])
             ->add('serie', EntityType::class, [
                 'class' => Serie::class,
