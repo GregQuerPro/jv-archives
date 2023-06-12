@@ -103,14 +103,14 @@ class Article
     #[ORM\Column(length: 180)]
     private ?string $metaDescription = null;
 
-    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Commentaire::class, cascade: ["persist"])]
-    private Collection $commentaires;
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comment::class, cascade: ["persist"])]
+    private Collection $comments;
 
 
     public function __construct()
     {
         $this->consoles = new ArrayCollection();
-        $this->commentaires = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -303,29 +303,29 @@ class Article
     }
 
     /**
-     * @return Collection<int, Commentaire>
+     * @return Collection<int, Comment>
      */
-    public function getCommentaires(): Collection
+    public function getComments(): Collection
     {
-        return $this->commentaires;
+        return $this->comments;
     }
 
-    public function addCommentaire(Commentaire $commentaire): self
+    public function addComment(Comment $commentaire): self
     {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires->add($commentaire);
+        if (!$this->comments->contains($commentaire)) {
+            $this->comments->add($commentaire);
             $commentaire->setArticle($this);
         }
 
         return $this;
     }
 
-    public function removeCommentaire(Commentaire $commentaire): self
+    public function removeComment(Comment $comment): self
     {
-        if ($this->commentaires->removeElement($commentaire)) {
+        if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($commentaire->getArticle() === $this) {
-                $commentaire->setArticle(null);
+            if ($comment->getArticle() === $this) {
+                $comment->setArticle(null);
             }
         }
 

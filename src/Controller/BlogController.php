@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Entity\Commentaire;
+use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentaireRepository;
@@ -61,15 +61,16 @@ class BlogController extends AbstractController
         $topSeries = $this->serieRepository->findTopSeries();
         $similarArticles = $articleRepository->findOtherArticlesBySerie($article->getSerie());
 
-        $comments = $em->getRepository(Commentaire::class)
-            ->createQueryBuilder('c')
-            ->where('c.article = :article')
-            ->setParameter('article', $article)
-            ->orderBy('c.id', 'DESC')
-            ->getQuery()
-            ->getResult();
+        $commentQuery = $commentaireRepository->findCommentsByArticle($article);
 
-        $comment = new Commentaire();
+        $comments = $this->paginator->paginate(
+            $commentQuery, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            12 /*limit per page*/
+        );
+
+
+        $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
@@ -93,7 +94,7 @@ class BlogController extends AbstractController
     }
 
     #[Route('/comment/delete/{id}', name: 'app_delete_comment', methods: ['POST'])]
-    public function deleteComment(Request $request, Commentaire $comment, CommentaireRepository $commentRepository): Response
+    public function deleteComment(Request $request, Comment $comment, CommentaireRepository $commentRepository): Response
     {
         $article = $comment->getArticle();
         if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {

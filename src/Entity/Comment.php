@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\Ignore;
 
 #[ORM\Entity(repositoryClass: CommentaireRepository::class)]
 #[ORM\HasLifecycleCallbacks]
-class Commentaire
+class Comment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

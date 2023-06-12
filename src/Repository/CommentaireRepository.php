@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Commentaire;
+use App\Entity\Comment;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
@@ -10,21 +10,21 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @extends ServiceEntityRepository<Commentaire>
+ * @extends ServiceEntityRepository<Comment>
  *
- * @method Commentaire|null find($id, $lockMode = null, $lockVersion = null)
- * @method Commentaire|null findOneBy(array $criteria, array $orderBy = null)
- * @method Commentaire[]    findAll()
- * @method Commentaire[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Comment|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Comment[]    findAll()
+ * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CommentaireRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Commentaire::class);
+        parent::__construct($registry, Comment::class);
     }
 
-    public function save(Commentaire $entity, bool $flush = false): void
+    public function save(Comment $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -33,7 +33,7 @@ class CommentaireRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Commentaire $entity, bool $flush = false): void
+    public function remove(Comment $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -43,7 +43,7 @@ class CommentaireRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Commentaire[] Returns an array of Commentaire objects
+     * @return Comment[] Returns an array of Comment objects
      */
     public function findLastCommentsByUserID($id): array
     {
@@ -87,20 +87,21 @@ class CommentaireRepository extends ServiceEntityRepository
     public function removeAllByUser(UserInterface $user): void
     {
         $this->createQueryBuilder('c')
-            ->delete('App\Entity\Commentaire', 'c')
+            ->delete('Comment.php', 'c')
             ->where('c.author = :user')
             ->setParameter('user', $user)
             ->getQuery()
             ->execute();
     }
 
-//    public function findOneBySomeField($value): ?Commentaire
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+
+
+    public function findCommentsByArticle($article): Query
+    {
+            return $this->createQueryBuilder('c')
+            ->where('c.article = :article')
+            ->setParameter('article', $article)
+            ->orderBy('c.id', 'DESC')
+            ->getQuery();
+    }
 }

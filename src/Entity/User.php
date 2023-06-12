@@ -75,8 +75,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Article::class)]
     private Collection $articles;
 
-    #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'author')]
-    private Collection $commentaires;
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'author')]
+    private Collection $comments;
 
     #[Vich\UploadableField(mapping: 'users', fileNameProperty: 'imageName')]
     #[Assert\Image(maxSize: '4M', maxSizeMessage: "L'image ne doit pas dépasser {{ limit }}.")]
@@ -108,7 +108,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->articles = new ArrayCollection();
-        $this->commentaires = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function __toString()
@@ -264,29 +264,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Commentaire>
+     * @return Collection<int, Comment>
      */
-    public function getCommentaires(): Collection
+    public function getComments(): Collection
     {
-        return $this->commentaires;
+        return $this->comments;
     }
 
-    public function addCommentaire(Commentaire $commentaire): self
+    public function addComment(Comment $comment): self
     {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires->add($commentaire);
-            $commentaire->setAuthor($this);
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+            $comment->setAuthor($this);
         }
 
         return $this;
     }
 
-    public function removeCommentaire(Commentaire $commentaire): self
+    public function removeComment(Comment $comment): self
     {
-        if ($this->commentaires->removeElement($commentaire)) {
+        if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($commentaire->getAuthor() === $this) {
-                $commentaire->setAuthor(null);
+            if ($comment->getAuthor() === $this) {
+                $comment->setAuthor(null);
             }
         }
 

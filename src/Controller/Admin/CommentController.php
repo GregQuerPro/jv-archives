@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Commentaire;
+use App\Entity\Comment;
 use App\Entity\User;
 use App\Form\CommentType;
 use App\Repository\CommentaireRepository;
@@ -41,7 +41,7 @@ class CommentController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_admin_comment_show', methods: ['GET'])]
-    public function show(Commentaire $comment): Response
+    public function show(Comment $comment): Response
     {
         return $this->render('admin/comment/show.html.twig', [
             'comment' => $comment,
@@ -49,7 +49,7 @@ class CommentController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_admin_comment_delete', methods: ['POST'])]
-    public function delete(Request $request, Commentaire $comment, CommentaireRepository $commentRepository): Response
+    public function delete(Request $request, Comment $comment, CommentaireRepository $commentRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
             $commentRepository->remove($comment, true);

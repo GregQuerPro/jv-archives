@@ -57,7 +57,7 @@
                                     Anonyme
                                 {% endif %}</span><span>-</span><span>{{ comment.createdAt|date('d/m') }}</span>
                         </div>
-                        {% if comment.author == app.user and comment.author != null or is_granted('ROLE_ADMIN')%}
+                        {% if comment.author == app.user and comment.author != null or is_granted('ROLE_ADMIN') %}
                             <form method="post" action="{{ path('app_delete_comment', {'id': comment.id}) }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
                                 <button class="btn btn-danger">Supprimer</button>
@@ -68,6 +68,9 @@
                 </div>
             </div>
             {% endfor %}
+            </div>
+            <div class="navigation">
+                {{ knp_pagination_render(comments) }}
             </div>
         </turbo-frame>
     </section>

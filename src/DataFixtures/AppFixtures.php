@@ -3,7 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
-use App\Entity\Commentaire;
+use App\Entity\Comment;
 use App\Entity\Console;
 use App\Entity\Media;
 use App\Entity\Serie;
@@ -24,18 +24,6 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-
-//        $medias = [];
-//        for ($mediaIndex = 0; $mediaIndex <= 3; $mediaIndex++) {
-//            $media = new Media();
-//            $media
-//                ->setType('image')
-//                ->setImageAlt('photo profil utilisateur')
-//                ->setImageName('mario.jpg');
-//            $manager->persist($media);
-//            $medias[] = $media;
-//        }
-//        $manager->flush();
 
         $series = [];
         $seriesDisplayNumber = 0;
@@ -182,9 +170,9 @@ class AppFixtures extends Fixture
 
         $comments = [];
         for ($commentIndex = 0; $commentIndex <= 5000; $commentIndex++) {
-            $comment = new Commentaire();
+            $comment = new Comment();
             $comment
-                ->setContent("Contenu Commentaire $commentIndex Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus esse, nisi numquam officiis Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus esse, nisi numquam officiis Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus esse, nisi numquam officiis Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus esse, nisi numquam officiis")
+                ->setContent("Contenu Comment $commentIndex Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus esse, nisi numquam officiis Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus esse, nisi numquam officiis Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus esse, nisi numquam officiis Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur delectus esse, nisi numquam officiis")
                 ->setAuthor($users[array_rand($users)])
                 ->setArticle($articles[array_rand($articles)]);
             $manager->persist($comment);

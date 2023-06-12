@@ -2,116 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c33e8ce3-fb4c-40e6-a93a-244589e04a3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20230511201058.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/users/zelda-645d254d20ba8385025360.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/users/zelda-645d26320bb93266041289.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EventSubscriber/CheckVerifiedUserSubscriber.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/registration/confirmation_email.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jv-archives.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jv-archives.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/react/controllers/Flash.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/react/controllers/Flash.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/base/_reset.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/base/_reset.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/base/_shame.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/base/_shame.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/base/_typography.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/base/_typography.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/base/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/base/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_article.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_article.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_auth.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_auth.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_bloc.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_bloc.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_button.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_card.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_comment.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_comment.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_footer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_input.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_input.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_page.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/components/_pagination.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/components/_pagination.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/utilities/_font.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/utilities/_font.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/utilities/_grid.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/utilities/_grid.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/utilities/_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/utilities/_layout.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/utilities/_spacing.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/utilities/_spacing.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/utilities/_wrapper.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/utilities/_wrapper.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/messenger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/messenger.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/vich_uploader.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/vich_uploader.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/11.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/8.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/articles/e5ddfd6b18c630cde6f88abe4e72d2ee-64563b9d48001523117560.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/articles/e5ddfd6b18c630cde6f88abe4e72d2ee-64563b9d48001523117560.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/consoles/nintento-snes-1672657129-1-644e3bfdc8666615765048.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/consoles/nintento-snes-1672657129-1-644e3bfdc8666615765048.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/consoles/testing.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/consoles/testing.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/general/arrow-down.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/general/arrow-down.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/general/logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/general/logo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/general/testing.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/general/testing.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/series/hapus-mango-644e663f28b67166440004.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/hapus-mango-644e663f28b67166440004.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/series/mario.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/mario.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/series/testing.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/testing.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/series/zelda-644e667bca005569075446.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/zelda-644e667bca005569075446.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/series/zelda.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/series/zelda.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/users/default.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/users/default.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/offline.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/offline.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/offline.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/offline.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/offline.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/offline.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/sw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AccoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/ArticleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ArchivesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArchivesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/CommentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BlogController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/OfflineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OfflineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Console.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Console.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Serie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/CommentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CommentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ConsoleType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ConsoleType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ProfilType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProfilType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/SerieType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SerieType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ArticleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ArticleRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/CommentaireRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CommentaireRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ConsoleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ConsoleRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/SerieRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SerieRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Slugifier.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Slugifier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accout/accout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accout/accout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accout/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accout/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/archives/console.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/archives/console.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/archives/consoles.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/archives/consoles.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/archives/serie.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/archives/serie.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/archives/series.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/archives/series.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article/_comments.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/_comments.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blog/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/_bloc.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_bloc.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_card.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -360,7 +262,8 @@
       <workItem from="1683242119988" duration="54467000" />
       <workItem from="1683755534996" duration="12959000" />
       <workItem from="1683825613385" duration="17415000" />
-      <workItem from="1686144770783" duration="13898000" />
+      <workItem from="1686144770783" duration="16540000" />
+      <workItem from="1686380113747" duration="11192000" />
     </task>
     <servers />
   </component>
